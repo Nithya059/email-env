@@ -1,0 +1,27 @@
+name: email-env
+description: RL environment for email classification (spam, important, normal)
+
+tasks:
+  - name: easy
+    description: simple keyword-based emails
+  - name: medium
+    description: mixed emails with noise
+  - name: hard
+    description: complex emails with ambiguous context
+
+observation_space:
+  type: dict
+  fields:
+    subject: string
+    body: string
+    label: string
+
+action_space:
+  type: dict
+  fields:
+    action: string  # spam/important/normal
+
+reward:
+  description: |
+    +0.015 correct classification
+     0.005 incorrect classification
